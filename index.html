@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,47 @@
     <style>
         body {
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #121212; /* Matches the image background */
+            overflow: hidden;
+            /* Prevent scrolling */
         }
 
         img {
-            max-width: 100%; /* Ensures the image never overflows the screen width */
-            height: auto; /* Maintains the aspect ratio */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures the image covers the whole viewport without distortion */
         }
 
-        @media (min-width: 768px) {
-            img {
-                max-width: 80%; /* Allows some margin on larger screens */
-                max-height: 80%; /* Ensures it fits within the viewport */
+        .desktop-image,
+        .mobile-image {
+            display: none;
+        }
+
+        /* Mobile screen */
+        @media (max-width: 767px) {
+            .mobile-image {
+                display: block;
             }
         }
 
-        @media (min-width: 1200px) {
-            img {
-                max-width: 60%; /* Adds more margin on very large screens */
-                max-height: 60%;
+        /* Tablet and Desktop screen */
+        @media (min-width: 768px) {
+            .desktop-image {
+                display: block;
             }
         }
     </style>
 </head>
+
 <body>
-    <img src="Frame_143724703.png" alt="Site Upgrade">
+    <!-- Mobile image -->
+    <img src="375.png" alt="Site Upgrade Mobile" class="mobile-image">
+
+    <!-- Desktop image -->
+    <img src="1920.png" alt="Site Upgrade Desktop" class="desktop-image">
 </body>
+
 </html>
